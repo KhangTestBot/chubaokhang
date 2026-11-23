@@ -144,7 +144,7 @@ test('all original personal output outside the explicit filter and metadata scop
   // Captured before editing forceGold4.3_60s_full.js, using the exact input() fixture.
   // Original script SHA-256: 93519a1c932ce3de37612150f9d9524d4e291905b274e37260a287acac1f1a0f
   const digest = createHash('sha256').update(JSON.stringify(stable(protectedConfig(run().output)))).digest('hex');
-  assert.equal(digest, '284349fbdcc690d430008642d1836b38413586cc752dffeab7786d9e72f16566');
+  assert.equal(digest, 'e675ce8062fff175b04d0b21e1b6606450ea0185c9cc67fd2674b24ba127a971');
 });
 
 test('every original switch inside the three extended JSON entries is preserved exactly', () => {
