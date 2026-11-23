@@ -4869,8 +4869,8 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
-            uid: "christmas_2026_v1",            
-            url: "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/christmas-widget-frame.png",
+            uid: "midautumn_2026",            
+            url: "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/midautumn_2026.png",
             use_local_time_zone: true,
             placement: "below",
             start_at: "2020-01-01T00:00:00",
