@@ -574,7 +574,30 @@ def _optimize_cloudflare_prompt(prompt: str) -> str:
 _cf_index: int | None = None
 _cf_lock = threading.Lock()
 
+_CF_BLOCK_CODES = frozenset({"3030", "content_policy_violation", "moderation_blocked", "safety_violation"})
+
+
+def _cf_errors(body, limit) -> list[tuple[str, str]]:
+    """Return (code, short message) pairs from a Cloudflare error body; never raises."""
+    try:
+        payload = json.loads(body[:limit])
+    except (ValueError, TypeError):
+        return []
+    errors = payload.get("errors") if isinstance(payload, dict) else None
+    return [(str(e.get("code", "")), str(e.get("message", ""))[:120])
+            for e in (errors if isinstance(errors, list) else []) if isinstance(e, dict)]
+
+
+def _cf_is_quota_or_auth(status: int, errors) -> bool:
+    if status in (401, 403, 429):
+        return True
+    text = " ".join(f"{c} {m}" for c, m in errors).lower()
+    return any(word in text for word in ("neuron", "allocation", "quota", "limit", "4006"))
+
+
 def create_cloudflare_editor(config: Config, fetch=request_https):
+    cooldown: dict[str, float] = {}  # account_id -> monotonic time until which it is skipped
+
     def edit(image: tuple[bytes, str], prompt: str) -> tuple[bytes, str]:
         if not config.cloudflare_credentials:
             fail(503, "not_configured", "No Cloudflare credentials configured.")
@@ -600,9 +623,21 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
             start = _cf_index % n
             _cf_index = (start + 1) % n
 
-        for i in range(n):
-            idx = (start + i) % n
+        # Skip accounts that recently reported exhausted quota / bad auth, unless
+        # every account is cooling down (then try them all rather than give up).
+        now = time.monotonic()
+        order = [(start + i) % n for i in range(n)]
+        candidates = [i for i in order if cooldown.get(config.cloudflare_credentials[i][0], 0) <= now] or order
+        # One shared deadline: trying several accounts must not exceed the budget the
+        # Locket script / Vercel function is willing to wait.
+        budget_deadline = now + config.provider_timeout
+
+        for idx in candidates:
+            remaining = budget_deadline - time.monotonic()
+            if remaining < 1:
+                break
             account_id, api_token = config.cloudflare_credentials[idx]
+            tag = f"idx={idx}/{n} account=...{account_id[-4:]}"
             url = f"{CLOUDFLARE_API_BASE}/{account_id}/ai/run/{config.cloudflare_model}"
 
             try:
@@ -615,42 +650,44 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
                     },
                     body=body,
                     maximum=config.max_provider_bytes,
-                    timeout=config.provider_timeout,
+                    timeout=remaining,
                 )
             except Exception:
-                print(f"[locket-backend] cf_credential idx={idx}/{n} account=...{account_id[-4:]} network_error", flush=True)
+                print(f"[locket-backend] cf_credential {tag} network_error", flush=True)
                 last_status = 502
                 continue
 
-            print(f"[locket-backend] cf_credential idx={idx}/{n} account=...{account_id[-4:]} status={response.status}", flush=True)
-            if response.status == 429:
-                last_status = 429
-                continue
-
-            if not 200 <= response.status < 300:
-                # Kiểm tra lỗi blocked
-                blocked = False
+            ok_status = 200 <= response.status < 300
+            payload = None
+            errors = []
+            if not ok_status:
+                errors = _cf_errors(response.body, config.max_body_bytes)
+            else:
+                raw = _bounded_response(response, config.max_provider_bytes, "provider_response_too_large")
                 try:
-                    errors = json.loads(response.body[:config.max_body_bytes]).get("errors", [])
-                    for err in errors if isinstance(errors, list) else []:
-                        if isinstance(err, dict) and err.get("code") in (
-                            3030, "3030",
-                            "content_policy_violation", "moderation_blocked", "safety_violation"
-                        ):
-                            blocked = True
-                            break
-                except (ValueError, TypeError, AttributeError):
-                    pass
-                if blocked:
+                    payload = json.loads(raw)
+                except (ValueError, TypeError):
+                    payload = None
+                if isinstance(payload, dict) and payload.get("success") is False:
+                    errors = _cf_errors(raw, config.max_provider_bytes)
+                    ok_status = False  # HTTP 200 but Cloudflare reported failure
+
+            if not ok_status:
+                summary = "; ".join(f"{c}:{m}" for c, m in errors[:3]) or "-"
+                print(f"[locket-backend] cf_credential {tag} status={response.status} errors={summary}", flush=True)
+                if any(code in _CF_BLOCK_CODES for code, _ in errors):
                     fail(422, "generation_blocked", "The image provider blocked this request.")
-                last_status = response.status
+                if _cf_is_quota_or_auth(response.status, errors):
+                    cooldown[account_id] = time.monotonic() + 600
+                    last_status = 429 if response.status == 429 or _cf_is_quota_or_auth(0, errors) else response.status
+                else:
+                    last_status = response.status
                 continue
 
+            print(f"[locket-backend] cf_credential {tag} status={response.status} response_received", flush=True)
             # Thành công → parse ảnh
-            raw = _bounded_response(response, config.max_provider_bytes, "provider_response_too_large")
             try:
-                payload = json.loads(raw)
-                if payload.get("success") is False:
+                if not isinstance(payload, dict):
                     raise ValueError()
                 # Cloudflare trả về image dạng base64 trong result
                 result = payload.get("result")
@@ -663,7 +700,9 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
                 if not isinstance(encoded, str) or not encoded:
                     raise ValueError()
             except (ValueError, TypeError, KeyError):
-                fail(502, "invalid_provider_response", "The image provider did not return an edited image.")
+                print(f"[locket-backend] cf_credential {tag} empty_result; trying next", flush=True)
+                last_status = 502
+                continue
 
             if len(encoded) > 4 * ((config.max_image_bytes + 2) // 3):
                 fail(502, "invalid_generated_image", "The provider returned invalid image data.")
