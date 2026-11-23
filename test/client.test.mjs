@@ -282,9 +282,9 @@ for (const filterId of nativeIds) {
   });
 }
 
-test('the pinned catalog retains all 95 entries, including 27 compositions', () => {
-  assert.equal(catalog.filters.length, 95);
-  assert.equal(new Set(catalog.filters.map(filter => filter.id)).size, 95);
+test('the pinned catalog retains all 105 entries, including 27 compositions', () => {
+  assert.equal(catalog.filters.length, 105);
+  assert.equal(new Set(catalog.filters.map(filter => filter.id)).size, 105);
   assert.equal(catalog.filters.filter(filter => ['Frames', 'Photobooth'].includes(filter.category)).length, 27);
 });
 
