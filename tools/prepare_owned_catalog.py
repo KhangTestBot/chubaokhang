@@ -121,7 +121,7 @@ def holes(image, count):
 
 def make_frame(filter_data, count):
     """Code-drawn Hoang frame used when source artwork has no usable photo holes."""
-    width, height = (1000, 1400)
+    width, height = (1080, 1080)
     colors = filter_data.get("colors") or ["#F4D9E5", "#DCE9F8"]
     color = colors[0] if isinstance(colors[0], str) and len(colors[0]) in (7, 9) else "#F4D9E5"
     canvas = Image.new("RGBA", (width, height), color)
@@ -140,9 +140,9 @@ def make_frame(filter_data, count):
         draw.ellipse((x - radius, y - radius, x + radius, y + radius), outline=(255, 255, 255, 210), width=3)
     draw.rounded_rectangle((15, 15, width - 16, height - 16), radius=45, outline=(255, 255, 255, 230), width=8)
     if count == 4:
-        slots = [[55, 70, 430, 570], [515, 70, 430, 570], [55, 670, 430, 570], [515, 670, 430, 570]]
+        slots = [[62, 62, 464, 424], [554, 62, 464, 424], [62, 514, 464, 424], [554, 514, 464, 424]]
     else:
-        slots = [[55, 65, 890, 1165]]
+        slots = [[64, 64, 952, 872]]
     for x, y, w, h in slots:
         draw.rectangle((x, y, x + w - 1, y + h - 1), fill=(0, 0, 0, 0))
         draw.rectangle((x - 5, y - 5, x + w + 4, y + h + 4), outline=(255, 255, 255, 255), width=5)
@@ -150,7 +150,7 @@ def make_frame(filter_data, count):
     font = ImageFont.truetype(str(font_path), 38) if font_path.is_file() else ImageFont.load_default(size=38)
     text = "DUY KHANH  /  PHOTOBOOTH" if count == 4 else "DUY KHANH  /  LOCKET"
     bounds = draw.textbbox((0, 0), text, font=font)
-    draw.text(((width - (bounds[2] - bounds[0])) / 2, 1285), text, fill=(65, 45, 65, 255), font=font)
+    draw.text(((width - (bounds[2] - bounds[0])) / 2, 980), text, fill=(65, 45, 65, 255), font=font)
     return canvas, slots
 
 

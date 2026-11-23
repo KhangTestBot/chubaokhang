@@ -47,7 +47,7 @@ Hai thông số kết nối là **cố định** và được Shadowrocket lưu 
 > **Lưu ý về hạn mức AI:** Tài khoản Cloudflare Workers AI gói Free có hạn mức **10.000 Neurons/ngày** và tự động reset về `0` vào **07:00 sáng giờ Việt Nam (00:00 UTC)**. Khi hết hạn mức trong ngày, các bộ lọc AI sẽ tạm báo lỗi nhưng các khung **Photobooth** vẫn hoạt động bình thường.
 
 ### Bước 3: Hiện khung viền Giáng sinh trên tiện ích (Widget)
-1. Đảm bảo đã cập nhật module bản mới nhất trong Shadowrocket (`duykhanh-ai-ptb-15` trở lên).
+1. Đảm bảo đã cập nhật module bản mới nhất trong Shadowrocket (`duykhanh-ai-ptb-16` trở lên).
 2. Giữ Shadowrocket **BẬT**, đóng hẳn rồi mở lại app **Locket**.
 3. Gửi/nhận 1 ảnh mới hoặc **xóa tiện ích Locket ngoài màn hình chính rồi thêm lại** để iOS tải khung viền mới.
 
