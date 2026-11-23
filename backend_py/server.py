@@ -175,16 +175,22 @@ def read_config(env: Mapping[str, str] | None = None) -> Config:
     if raw_creds:
         try:
             data = json.loads(raw_creds)
-            if isinstance(data, list):
-                for item in data:
-                    if not isinstance(item, dict):
-                        continue
-                    acc = str(item.get("account_id", "")).strip()
-                    tok = str(item.get("api_token", "")).strip()
-                    if acc and tok and re.fullmatch(r"[A-Fa-f0-9]{16,64}", acc):
-                        cf_credentials.append((acc, tok))
-        except Exception:
-            pass
+            if not isinstance(data, list):
+                print("[locket-backend] CLOUDFLARE_CREDENTIALS must be a JSON array; ignoring it", flush=True)
+                data = []
+            for pos, item in enumerate(data):
+                if not isinstance(item, dict):
+                    print(f"[locket-backend] CLOUDFLARE_CREDENTIALS[{pos}] is not an object; skipped", flush=True)
+                    continue
+                acc = str(item.get("account_id", "")).strip()
+                tok = str(item.get("api_token", "")).strip()
+                if acc and tok and re.fullmatch(r"[A-Fa-f0-9]{16,64}", acc):
+                    cf_credentials.append((acc, tok))
+                else:
+                    print(f"[locket-backend] CLOUDFLARE_CREDENTIALS[{pos}] needs hex account_id and api_token; skipped", flush=True)
+        except ValueError:
+            print("[locket-backend] CLOUDFLARE_CREDENTIALS is not valid JSON; falling back to CLOUDFLARE_API_TOKEN", flush=True)
+        print(f"[locket-backend] loaded {len(cf_credentials)} Cloudflare credential(s) from CLOUDFLARE_CREDENTIALS", flush=True)
 
     # Fallback về 1 cặp cũ (tương thích ngược)
     cf_token = env.get("CLOUDFLARE_API_TOKEN", "").strip()
@@ -565,7 +571,7 @@ def _optimize_cloudflare_prompt(prompt: str) -> str:
         cleaned = f"{base}. {lock}"
     return cleaned
 
-_cf_index = 0
+_cf_index: int | None = None
 _cf_lock = threading.Lock()
 
 def create_cloudflare_editor(config: Config, fetch=request_https):
@@ -587,6 +593,10 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
         last_status = None
 
         with _cf_lock:
+            if _cf_index is None:
+                # Serverless instances start cold; a random first pick spreads load
+                # across credentials instead of always starting at index 0.
+                _cf_index = secrets.randbelow(n)
             start = _cf_index % n
             _cf_index = (start + 1) % n
 
@@ -608,9 +618,11 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
                     timeout=config.provider_timeout,
                 )
             except Exception:
+                print(f"[locket-backend] cf_credential idx={idx}/{n} account=...{account_id[-4:]} network_error", flush=True)
                 last_status = 502
                 continue
 
+            print(f"[locket-backend] cf_credential idx={idx}/{n} account=...{account_id[-4:]} status={response.status}", flush=True)
             if response.status == 429:
                 last_status = 429
                 continue
@@ -622,6 +634,7 @@ def create_cloudflare_editor(config: Config, fetch=request_https):
                     errors = json.loads(response.body[:config.max_body_bytes]).get("errors", [])
                     for err in errors if isinstance(errors, list) else []:
                         if isinstance(err, dict) and err.get("code") in (
+                            3030, "3030",
                             "content_policy_violation", "moderation_blocked", "safety_violation"
                         ):
                             blocked = True
@@ -785,8 +798,11 @@ def create_handler_class(*, config: Config, store, fetch=request_https,
             try:
                 path = self.path.split("?", 1)[0]
                 if self.command == "GET" and path == "/health":
-                    return self._json(200, {"ok": True, "configured": config.configured,
-                                            "compositionConfigured": config.composition_configured})
+                    health = {"ok": True, "configured": config.configured,
+                              "compositionConfigured": config.composition_configured}
+                    if config.provider == "cloudflare":
+                        health["cloudflareCredentials"] = len(config.cloudflare_credentials)
+                    return self._json(200, health)
                 if self.command == "GET" and path.startswith("/images/"):
                     result = store.read(path[len("/images/"):])
                     if result is None:
