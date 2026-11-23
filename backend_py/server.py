@@ -520,7 +520,7 @@ def _encode_multipart(fields: list[tuple[str, str]],
 
 _STYLIZED_PROMPT_RE = re.compile(
     r"\b(?:minecraft|watercolor|anime|ghibli|cartoon|comic|sketch|oil painting|"
-    r"pixel|3d|fortnite|zombie|clay|lego|simpson|disney|pixar|voxel|chibi)\b",
+    r"pixel|3d|fortnite|zombie|ogre|clay|lego|simpson|disney|pixar|voxel|chibi)\b",
     re.I,
 )
 _CF_REALISTIC_IDENTITY_LOCK = (
@@ -546,8 +546,10 @@ def _optimize_cloudflare_prompt(prompt: str) -> str:
         )
     elif "shrek" in lower:
         cleaned = (
-            "Show the person in the photo with playful fairytale green ogre trumpet-shaped ears "
-            "on the sides of their head and subtle fun green fantasy tint on their cheeks."
+            "Transform the person's entire face, head, and neck into a realistic friendly fairytale green ogre "
+            "with smooth vibrant olive-green skin covering their whole face and neck, iconic green trumpet-shaped ogre ears, "
+            "a slightly fuller rounded ogre nose, thick expressive eyebrows, and a rustic medieval brown vest over a cream tunic, "
+            "keeping the exact same pose, camera framing, lighting, and original background."
         )
     elif lower.startswith("dress the people in elegant wedding attire"):
         cleaned = (
