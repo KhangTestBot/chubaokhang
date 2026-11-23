@@ -282,9 +282,9 @@ for (const filterId of nativeIds) {
   });
 }
 
-test('the pinned catalog retains all 105 entries, including 27 compositions', () => {
-  assert.equal(catalog.filters.length, 105);
-  assert.equal(new Set(catalog.filters.map(filter => filter.id)).size, 105);
+test('the pinned catalog retains all 83 entries, including 27 compositions', () => {
+  assert.equal(catalog.filters.length, 83);
+  assert.equal(new Set(catalog.filters.map(filter => filter.id)).size, 83);
   assert.equal(catalog.filters.filter(filter => ['Frames', 'Photobooth'].includes(filter.category)).length, 27);
 });
 
@@ -606,4 +606,23 @@ test('oversized explicit instructions pass through with a bounded diagnostic', (
   const h = run({ request: { body: JSON.stringify({ imageUrl: INPUT, prompt: 'x'.repeat(4097) }) } });
   assertPass(h);
   assert.equal(JSON.parse(h.store.LOCKET_AI_STATUS).code, 'prompt_too_long');
+});
+
+const ownedCatalog = JSON.parse(await readFile(new URL('../assets/filters/catalog.json', import.meta.url), 'utf8'));
+const renderPresets = JSON.parse(await readFile(new URL('../assets/filters/render-presets.json', import.meta.url), 'utf8'));
+const PRESET_IDS = new Set(Object.keys(renderPresets.presets));
+
+test('owned live catalog retains all 105 entries (78 AI + 27 compositions) and dispatches all 22 Duy Khanh Exclusive filters', () => {
+  assert.equal(ownedCatalog.filters.length, 105);
+  assert.equal(new Set(ownedCatalog.filters.map(f => f.id)).size, 105);
+  assert.equal(ownedCatalog.filters.filter(f => PRESET_IDS.has(f.id)).length, 27);
+  const excl = ownedCatalog.groups.find(g => g.id === 'group_duykhanh_exclusive');
+  assert.ok(excl);
+  assert.equal(excl.filterIds.length, 22);
+  for (const id of excl.filterIds) {
+    const filter = ownedCatalog.filters.find(f => f.id === id);
+    const h = run({ request: { body: JSON.stringify({ imageUrl: INPUT, filterId: id }) } });
+    const prompt = sentPrompt(h);
+    assert.equal(prompt, filter.prompt, `exact prompt dispatched for ${id}`);
+  }
 });
