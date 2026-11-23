@@ -1,10 +1,26 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/health", "destination": "/api/index?__path=/health" },
-    { "source": "/v1/images/edit", "destination": "/api/index?__path=/v1/images/edit" },
-    { "source": "/v1/images/compose", "destination": "/api/index?__path=/v1/images/compose" },
-    { "source": "/images/:file", "destination": "/api/index?__path=/images/:file" }
+    {
+      "source": "/midautumn_2026(.*)",
+      "destination": "/widget-frame-christmas.png"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/index?__path=/health"
+    },
+    {
+      "source": "/v1/images/edit",
+      "destination": "/api/index?__path=/v1/images/edit"
+    },
+    {
+      "source": "/v1/images/compose",
+      "destination": "/api/index?__path=/v1/images/compose"
+    },
+    {
+      "source": "/images/:file",
+      "destination": "/api/index?__path=/images/:file"
+    }
   ],
   "functions": {
     "api/index.py": {
@@ -12,5 +28,20 @@
       "includeFiles": "assets/filters/**",
       "excludeFiles": "{test/**,test_python/**,tools/**,references/**,scripts/**,module/**}"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/widget-frame-christmas.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
 }
