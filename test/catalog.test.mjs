@@ -79,7 +79,7 @@ test('pinned catalog resolves every group and picker ID to one of 105 unique fil
     path: 'js/locketfix.js'
   });
   assert.equal(catalog.filters.length, 105);
-  assert.equal(catalog.groups.length, 12);
+  assert.equal(catalog.groups.length, 11);
   assert.equal(catalog.pickerIds.length, 85);
   const ids = new Set(catalog.filters.map(filter => filter.id));
   assert.equal(ids.size, catalog.filters.length);

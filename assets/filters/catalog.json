@@ -4807,7 +4807,17 @@
         "stk_dk_lego",
         "stk_dk_pixel_retro",
         "stk_dk_cool_shades",
-        "stk_dk_royal_crown"
+        "stk_dk_royal_crown",
+        "stk_fun_banana",
+        "stk_fun_chef_pasta",
+        "stk_fun_grandpa",
+        "stk_fun_frog_hat",
+        "stk_fun_disco_afro",
+        "stk_fun_boba_addict",
+        "stk_fun_muscles",
+        "stk_fun_shark_onesie",
+        "stk_fun_duck_squad",
+        "stk_fun_hotdog"
       ],
       "filter_ids": [
         "stk_dk_ghibli",
@@ -4821,36 +4831,7 @@
         "stk_dk_lego",
         "stk_dk_pixel_retro",
         "stk_dk_cool_shades",
-        "stk_dk_royal_crown"
-      ],
-      "requires_gold": false,
-      "requiresGold": false,
-      "is_gold": false,
-      "isGold": false,
-      "unlocked": true,
-      "is_unlocked": true,
-      "isUnlocked": true,
-      "free": true
-    },
-    {
-      "id": "group_duykhanh_funny",
-      "title": {
-        "en": "Hài Hước & Lầy Lội 😂",
-        "vi": "Hài Hước & Lầy Lội 😂"
-      },
-      "filterIds": [
-        "stk_fun_banana",
-        "stk_fun_chef_pasta",
-        "stk_fun_grandpa",
-        "stk_fun_frog_hat",
-        "stk_fun_disco_afro",
-        "stk_fun_boba_addict",
-        "stk_fun_muscles",
-        "stk_fun_shark_onesie",
-        "stk_fun_duck_squad",
-        "stk_fun_hotdog"
-      ],
-      "filter_ids": [
+        "stk_dk_royal_crown",
         "stk_fun_banana",
         "stk_fun_chef_pasta",
         "stk_fun_grandpa",
