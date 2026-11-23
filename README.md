@@ -58,22 +58,6 @@ Dùng ứng dụng **Phím tắt (Shortcuts)** sẵn có trên iPhone → chuy�
 
 ---
 
-## Tự deploy backend 24/7 miễn phí (Vercel + Cloudflare Workers AI)
-
-Nếu bạn muốn tự tạo bản triển khai riêng:
-
-1. Tại [Cloudflare Dashboard](https://dash.cloudflare.com/), vào **AI → Workers AI → Use REST API → Create a Workers AI API Token** để lấy **Account ID** và **API Token**.
-2. Vào [Vercel](https://vercel.com/new), chọn **Import Git Repository** → chọn repo `KhangTestBot/chubaokhang`.
-3. Trong mục **Storage** của dự án trên Vercel, tạo một **Vercel Blob** (Public, gói Free) và gắn vào dự án (Vercel tự thêm biến `BLOB_READ_WRITE_TOKEN`).
-4. Trong **Settings → Environment Variables**, thêm 3 biến:
-   - `CLOUDFLARE_ACCOUNT_ID`: Account ID của Cloudflare.
-   - `CLOUDFLARE_API_TOKEN`: API Token Workers AI của Cloudflare.
-   - `BACKEND_ACCESS_TOKEN`: chuỗi mật khẩu kết nối tự đặt (tối thiểu 24 ký tự) để nhập vào `http://locket-ai-setup.invalid/`.
-   - *(Tùy chọn)* `PUBLIC_BASE_URL` được tự nhận từ `VERCEL_PROJECT_PRODUCTION_URL`.
-5. Bấm **Deploy** (hoặc **Redeploy** sau khi thêm/đổi biến môi trường) và kiểm tra `/health`.
-
----
-
 ## Cấu hình biến môi trường backend
 
 | Biến | Mặc định / Ý nghĩa |
