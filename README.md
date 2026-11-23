@@ -7,7 +7,7 @@ Module Shadowrocket cá nhân của **Duy Khánh** (hoạt động độc lập 
 - **Locket Gold & quay 60 giây**: mở khóa tính năng Gold, thời lượng video 60s, ảnh/popup chào mừng Duy Khánh.
 - **Bộ caption tùy chỉnh**: bộ caption Duy Khánh + nhóm **⏳ Đếm ngược ngày lễ 🎉** tự động tính số ngày theo giờ Việt Nam (UTC+7).
 - **Viền Giáng sinh cho tiện ích (Widget)**: phát trực tiếp từ Vercel CDN (`https://chubaokhang.vercel.app/midautumn_2026.png`, tự rewrite đầy đủ các biến thể `_systemSmall@3x.png`, `_systemLarge@3x.png` mà Locket yêu cầu).
-- **83 bộ lọc & Photobooth**: gồm **56 hiệu ứng AI** (chạy trên Cloudflare Workers AI `@cf/black-forest-labs/flux-2-klein-4b`) và **27 khung ảnh / Photobooth** (ghép thật bằng Python + Pillow trên Vercel).
+- **95 bộ lọc & Photobooth**: gồm **68 hiệu ứng AI** (có thêm 12 hiệu ứng độc quyền trong nhóm **Duy Khánh Exclusive ✨**) (chạy trên Cloudflare Workers AI `@cf/black-forest-labs/flux-2-klein-4b`) và **27 khung ảnh / Photobooth** (ghép thật bằng Python + Pillow trên Vercel).
 - **YouTube**: tích hợp sẵn quy tắc chặn quảng cáo YouTube.
 
 ---
@@ -47,7 +47,7 @@ Hai thông số kết nối là **cố định** và được Shadowrocket lưu 
 > **Lưu ý về hạn mức AI:** Tài khoản Cloudflare Workers AI gói Free có hạn mức **10.000 Neurons/ngày** và tự động reset về `0` vào **07:00 sáng giờ Việt Nam (00:00 UTC)**. Khi hết hạn mức trong ngày, các bộ lọc AI sẽ tạm báo lỗi nhưng các khung **Photobooth** vẫn hoạt động bình thường.
 
 ### Bước 3: Hiện khung viền Giáng sinh trên tiện ích (Widget)
-1. Đảm bảo đã cập nhật module bản mới nhất trong Shadowrocket (`duykhanh-ai-ptb-11` trở lên).
+1. Đảm bảo đã cập nhật module bản mới nhất trong Shadowrocket (`duykhanh-ai-ptb-13` trở lên).
 2. Giữ Shadowrocket **BẬT**, đóng hẳn rồi mở lại app **Locket**.
 3. Gửi/nhận 1 ảnh mới hoặc **xóa tiện ích Locket ngoài màn hình chính rồi thêm lại** để iOS tải khung viền mới.
 
