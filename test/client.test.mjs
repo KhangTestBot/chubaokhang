@@ -632,7 +632,7 @@ test('four-slot photobooth accumulates 4 distinct single-shot captures across tu
 
   // Shot 1: single image sent, stored [0]
   const h1 = run({ store: sharedStore, request: { body: JSON.stringify({ imageUrl: FOUR_INPUTS[0], filterId: 'photobooth_4cut' }) } });
-  sentComposition(h1, 'photobooth_4cut', [FOUR_INPUTS[0]]);
+  assert.deepEqual(JSON.parse(h1.posts[0].settings.body), { presetId: 'photobooth_4cut', imageUrl: FOUR_INPUTS[0] });
   h1.respond(null, { status: 200 }, composedResult(1, 4));
   assert.equal(h1.done[0].response.status, 200);
   sharedStore.LOCKET_PTB_QUEUE = h1.store.LOCKET_PTB_QUEUE;
@@ -664,13 +664,13 @@ test('four-slot photobooth accumulates 4 distinct single-shot captures across tu
   // Shot 5 after auto-reset starts fresh at 1/4
   sharedStore.LOCKET_PTB_QUEUE = h4.store.LOCKET_PTB_QUEUE;
   const h5 = run({ store: sharedStore, request: { body: JSON.stringify({ imageUrl: INPUT, filterId: 'photobooth_4cut' }) } });
-  sentComposition(h5, 'photobooth_4cut', [INPUT]);
+  assert.deepEqual(JSON.parse(h5.posts[0].settings.body), { presetId: 'photobooth_4cut', imageUrl: INPUT });
 });
 
 test('expired or failing photobooth queue resets cleanly without blocking future captures', () => {
   const expired = JSON.stringify({ urls: [FOUR_INPUTS[0], FOUR_INPUTS[1]], updatedAt: Date.now() - 6 * 60 * 1000 });
   const hExp = run({ store: { LOCKET_PTB_QUEUE: expired }, request: { body: JSON.stringify({ imageUrl: FOUR_INPUTS[2], filterId: 'photobooth_4cut' }) } });
-  sentComposition(hExp, 'photobooth_4cut', [FOUR_INPUTS[2]]);
+  assert.deepEqual(JSON.parse(hExp.posts[0].settings.body), { presetId: 'photobooth_4cut', imageUrl: FOUR_INPUTS[2] });
 
   const active = JSON.stringify({ urls: [FOUR_INPUTS[0]], updatedAt: Date.now() });
   const hFail = run({ store: { LOCKET_PTB_QUEUE: active }, request: { body: JSON.stringify({ imageUrl: FOUR_INPUTS[1], filterId: 'photobooth_4cut' }) } });
