@@ -2349,17 +2349,17 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
     {
         "uid": "pb_ripped_paper_4cut",
         "id": "pb_ripped_paper_4cut",
-        "name": "Photobooth Duy Khánh 08",
+        "name": "Photobooth Christmas Day 🎄",
         "category": "Photobooth",
         "prompt": "pb_ripped_paper_4cut",
         "style": "cutout",
         "type": "normal",
         "filterType": "cutout",
         "overlay": true,
-        "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
-        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
-        "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
-        "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
+        "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
+        "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
+        "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
         "tintColor": "#EF4444",
         "colors": [
             "#EF4444",
@@ -2370,9 +2370,9 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
             "#FCA5A5"
         ],
         "icon": {
-            "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
-            "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
-            "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/254828cb4453ac298092be6d9f77fe71414d9c6a95f4aebab8904987db57a056.png",
+            "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
+            "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
+            "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/4ac721c83649d873766ad77d33b8e6cf8007b0b0d7dd4d8e87d2375649b13406.png",
             "sfSymbol": "square.grid.2x2",
             "symbol": "square.grid.2x2",
             "emoji": ""
