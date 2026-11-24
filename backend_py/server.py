@@ -916,7 +916,11 @@ def create_handler_class(*, config: Config, store, fetch=request_https,
                 try:
                     download_deadline = time.monotonic() + config.download_timeout
                     images = []
+                    downloaded_cache = {}
                     for source_url in source_urls:
+                        if source_url in downloaded_cache:
+                            images.append(downloaded_cache[source_url])
+                            continue
                         remaining = download_deadline - time.monotonic()
                         if remaining <= 0:
                             fail(502, "image_download_failed", "The input image could not be downloaded.")
@@ -924,7 +928,9 @@ def create_handler_class(*, config: Config, store, fetch=request_https,
                         remaining = download_deadline - time.monotonic()
                         if remaining <= 0:
                             fail(502, "image_download_failed", "The input image could not be downloaded.")
-                        images.append(download_image(url, config, fetch, remaining))
+                        downloaded_image = download_image(url, config, fetch, remaining)
+                        downloaded_cache[source_url] = downloaded_image
+                        images.append(downloaded_image)
                         if time.monotonic() > download_deadline:
                             fail(502, "image_download_failed", "The input image could not be downloaded.")
                     metadata = {}

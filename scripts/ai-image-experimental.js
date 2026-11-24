@@ -369,6 +369,31 @@
         return { code: hasId ? "unknown_preset" : "prompt_missing" };
     }
 
+    var ptbQueueKey = "LOCKET_PTB_QUEUE";
+    var ptbQueueTtlMs = 5 * 60 * 1000;
+
+    function readPhotoboothQueue() {
+        try {
+            var raw = $persistentStore.read(ptbQueueKey);
+            if (typeof raw !== "string" || !raw) return [];
+            var parsed = JSON.parse(raw);
+            if (!record(parsed) || !Array.isArray(parsed.urls)) return [];
+            if (typeof parsed.updatedAt !== "number" || Date.now() - parsed.updatedAt > ptbQueueTtlMs) return [];
+            var valid = [];
+            for (var i = 0; i < parsed.urls.length && valid.length < 4; i++) {
+                if (typeof parsed.urls[i] === "string" && httpsUrl(parsed.urls[i], true)) valid.push(parsed.urls[i]);
+            }
+            return valid;
+        } catch (ignored) { return []; }
+    }
+
+    function writePhotoboothQueue(urls) {
+        try {
+            if (typeof $persistentStore === "undefined" || !$persistentStore || typeof $persistentStore.write !== "function") return;
+            $persistentStore.write(urls && urls.length ? JSON.stringify({ urls: urls, updatedAt: Date.now() }) : "", ptbQueueKey);
+        } catch (ignored) {}
+    }
+
     function nativeResponse(outputUrl) {
         var urls = { outputUrl: outputUrl, output_url: outputUrl, url: outputUrl, imageUrl: outputUrl, image_url: outputUrl };
         return {
@@ -411,9 +436,25 @@
         var composing = !!selected.presetId;
         if (!composing && inputs.imageUrls) return pass("input", "composition_required");
         if (composing && inputs.urls.length > selected.slotCount) return pass("input", "image_count_mismatch");
+        var sendUrls = inputs.urls;
+        var queuedShots = null;
+        if (composing && selected.slotCount === 4 && !inputs.imageUrls) {
+            var prev = readPhotoboothQueue();
+            queuedShots = prev.length >= 4 ? [] : prev.slice(0, 3);
+            if (!queuedShots.length || queuedShots[queuedShots.length - 1] !== inputs.imageUrl) {
+                queuedShots.push(inputs.imageUrl);
+            }
+            if (queuedShots.length === 1) sendUrls = [queuedShots[0]];
+            else if (queuedShots.length === 2) sendUrls = [queuedShots[0], queuedShots[1], queuedShots[0], queuedShots[1]];
+            else if (queuedShots.length === 3) sendUrls = [queuedShots[0], queuedShots[1], queuedShots[2], queuedShots[2]];
+            else {
+                queuedShots = queuedShots.slice(-4);
+                sendUrls = queuedShots.slice();
+            }
+        }
         var backendBody = composing ? { presetId: selected.presetId } : { prompt: selected.prompt };
-        if (inputs.imageUrls) backendBody.imageUrls = inputs.imageUrls;
-        else backendBody.imageUrl = inputs.imageUrl;
+        if (sendUrls.length > 1 || inputs.imageUrls) backendBody.imageUrls = sendUrls;
+        else backendBody.imageUrl = sendUrls[0];
 
         // HTTP client timeout is in seconds. The local guard stays below the module's 60 seconds.
         watchdog = setTimeout(function () { pass("backend", "timeout"); }, 50000);
@@ -438,6 +479,9 @@
                         var safeCodes = ["image_dns_failed","unsafe_image_host","unsafe_image_url","image_download_failed","unsupported_image","invalid_image","provider_unavailable","provider_rate_limited","generation_blocked","provider_rejected_request","invalid_provider_response","invalid_generated_image","not_configured","unauthorized","invalid_content_type","invalid_request","request_too_large","invalid_json","invalid_input","backend_busy","backend_rate_limited","internal_error","not_found","invalid_composition","unsupported_composition"];
                         if (typeof errorCode === "string" && safeCodes.indexOf(errorCode) !== -1) detailCode = "server_" + errorCode;
                     } catch (ignoredErrorResponse) {}
+                    if (queuedShots && queuedShots.length > 1 && (detailCode === "server_image_download_failed" || detailCode === "server_invalid_image")) {
+                        writePhotoboothQueue([]);
+                    }
                     return pass("backend", detailCode);
                 }
                 if (typeof data !== "string" || data.length > 65536) return pass("backend", "invalid_response");
@@ -447,14 +491,15 @@
                 var output = httpsUrl(outputUrl, false);
                 if (!output || output.origin !== endpoint.origin) return pass("backend", "invalid_output");
                 if (!/^\/images\/[A-Za-z0-9_-]{24,128}\.(?:png|jpe?g|webp)$/.test(output.path)) return pass("backend", "invalid_output");
-                for (var i = 0; i < inputs.urls.length; i++) {
-                    var input = httpsUrl(inputs.urls[i], true);
+                for (var i = 0; i < sendUrls.length; i++) {
+                    var input = httpsUrl(sendUrls[i], true);
                     if (output.origin === input.origin && output.path === input.path.split("?")[0]) return pass("backend", "unchanged_output");
                 }
                 if (composing) {
-                    if (result.sourceImageCount !== inputs.urls.length || result.slotCount !== selected.slotCount ||
+                    if (result.sourceImageCount !== sendUrls.length || result.slotCount !== selected.slotCount ||
                         typeof result.expiresInSeconds !== "number" || result.expiresInSeconds <= 0 ||
                         result.expiresInSeconds % 1 !== 0) return pass("backend", "invalid_response");
+                    if (queuedShots) writePhotoboothQueue(queuedShots.length >= 4 ? [] : queuedShots);
                     diagnostic("result", result.sourceImageCount === 1 && result.slotCount > 1 ? "composition_single_source" : "composition_success");
                 } else diagnostic("result", "success");
                 return finish(nativeResponse(outputUrl));

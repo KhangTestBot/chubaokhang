@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
+import os
 from http.server import BaseHTTPRequestHandler
+
+# Allow rapid 4-shot Photobooth captures on warm Vercel containers without hitting the local 3/min default.
+os.environ.setdefault("RATE_LIMIT_PER_MINUTE", "20")
+os.environ.setdefault("MAX_CONCURRENT", "4")
 from urllib.parse import parse_qs, urlsplit
 
 from backend_py.server import create_vercel_handler

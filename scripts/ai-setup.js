@@ -4,6 +4,7 @@
     var endpointKey = "LOCKET_AI_ENDPOINT";
     var tokenKey = "LOCKET_AI_TOKEN";
     var nonceKey = "LOCKET_AI_SETUP_NONCE";
+    var ptbQueueKey = "LOCKET_PTB_QUEUE";
     var done = false;
 
     function finish(status, body, extra) {
@@ -120,6 +121,17 @@
         return fields;
     }
 
+    function photoboothQueueCount() {
+        try {
+            var raw = read(ptbQueueKey);
+            if (!raw) return 0;
+            var parsed = JSON.parse(raw);
+            if (!parsed || !Array.isArray(parsed.urls) || typeof parsed.updatedAt !== "number") return 0;
+            if (Date.now() - parsed.updatedAt > 5 * 60 * 1000) return 0;
+            return Math.min(4, parsed.urls.length);
+        } catch (ignored) { return 0; }
+    }
+
     function page() {
         var nonce = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2) + "-" + Math.random().toString(36).slice(2);
         if (!write(nonceKey, nonce)) return finish(503, "Không lưu được cấu hình trên thiết bị.");
@@ -136,6 +148,8 @@
             '<label>Địa chỉ máy chủ AI<input name="endpoint" type="url" required maxlength="512" placeholder="https://ai.example.com" value="' + escapeHtml(current) + '"></label>' +
             '<label>Mã kết nối backend<input name="token" type="password" required minlength="24" maxlength="258" autocomplete="off"></label>' +
             '<small>Mã này khác token đăng nhập Locket và API key OpenAI. Thông tin được lưu trong Shadowrocket trên thiết bị.</small><p><button>Lưu kết nối</button></p></form>' +
+            '<p class="status">Photobooth 4 ảnh thật: đang lưu <strong>' + photoboothQueueCount() + '/4</strong> tấm (chụp 4 dáng liên tiếp trong 5 phút sẽ ghép đủ 4 ô khác nhau rồi tự đặt lại).</p>' +
+            '<form method="post" action="' + origin + '/reset-photobooth">' + hidden + '<button class="secondary">Đặt lại hàng đợi 4 ảnh Photobooth</button></form>' +
             '<form method="post" action="' + origin + '/clear">' + hidden + '<button class="secondary">Xóa kết nối đã lưu</button></form></main></html>';
         return finish(200, html);
     }
@@ -149,7 +163,7 @@
         var method = String($request.method || "GET").toUpperCase();
         if (method === "GET" && path === "/") return page();
         if (method === "GET" && path === "/favicon.ico") return finish(204, "");
-        if (method !== "POST" || (path !== "/save" && path !== "/clear")) return finish(404, "Không có trang này.");
+        if (method !== "POST" || (path !== "/save" && path !== "/clear" && path !== "/reset-photobooth")) return finish(404, "Không có trang này.");
         var headers = $request.headers || {};
         var originHeader = "";
         Object.keys(headers).forEach(function (key) { if (key.toLowerCase() === "origin") originHeader = String(headers[key]); });
@@ -159,8 +173,12 @@
         if (typeof $request.body !== "string" || $request.body.length > 8192) return finish(400, "Biểu mẫu không hợp lệ.");
         var form = parseForm($request.body);
         if (!form.nonce || form.nonce !== read(nonceKey)) return finish(403, "Hãy mở lại trang cấu hình rồi thử lại.");
+        if (path === "/reset-photobooth") {
+            if (!write(ptbQueueKey, "") || !write(nonceKey, "")) return finish(503, "Không đặt lại được hàng đợi Photobooth.");
+            return finish(303, "", { Location: origin + "/" });
+        }
         if (path === "/clear") {
-            if (!write(endpointKey, "") || !write(tokenKey, "") || !write(nonceKey, "")) return finish(503, "Không xóa được cấu hình.");
+            if (!write(endpointKey, "") || !write(tokenKey, "") || !write(ptbQueueKey, "") || !write(nonceKey, "")) return finish(503, "Không xóa được cấu hình.");
             return finish(303, "", { Location: origin + "/" });
         }
         var endpoint = normalizeEndpoint(String(form.endpoint || "").trim());

@@ -51,6 +51,13 @@ Hai thông số kết nối là **cố định** và được Shadowrocket lưu 
 2. Giữ Shadowrocket **BẬT**, đóng hẳn rồi mở lại app **Locket**.
 3. Gửi/nhận 1 ảnh mới hoặc **xóa tiện ích Locket ngoài màn hình chính rồi thêm lại** để iOS tải khung viền mới.
 
+### Mẹo chụp Photobooth 4 ảnh thật khác nhau
+Các khung Photobooth 4 ô có sẵn **bộ đệm tích lũy 4 dáng trong 5 phút**:
+1. Chọn 1 khung Photobooth 4 ô bất kỳ → tạo dáng 1 → bấm chụp → bấm **X** (chưa gửi).
+2. Tiếp tục chụp dáng 2 → bấm **X**, chụp dáng 3 → bấm **X**.
+3. Chụp dáng 4 → hệ thống tự ghép **đủ 4 ảnh thật khác nhau vào đúng 4 ô** → bấm **Gửi** (xong tự đặt lại về `0/4` cho lượt sau).
+4. Muốn xóa ngang hàng đợi trước khi đủ 4 tấm: mở `http://locket-ai-setup.invalid/` → bấm **Đặt lại hàng đợi 4 ảnh Photobooth**.
+
 ### Bước 4 (Tùy chọn): Tự động bật/tắt Shadowrocket khi mở/đóng Locket
 Dùng ứng dụng **Phím tắt (Shortcuts)** sẵn có trên iPhone → chuyển sang tab **Tự động hóa (Automation)** ở thanh dưới cùng:
 1. **Tự động bật**: Bấm **+** → **Ứng dụng (App)** → chọn **Locket** → chọn **Được mở (Is Opened)** + **Chạy ngay (Run Immediately)** (tắt *Thông báo khi chạy*) → thêm tác vụ Shadowrocket **Kết nối VPN (Connect VPN)**.
