@@ -99,7 +99,7 @@ test('malformed or unknown stored diagnostics never reflect private text or HTML
 test('setup page displays active photobooth queue count and resets only the queue via POST /reset-photobooth', () => {
   const store = new Map([
     ['LOCKET_AI_ENDPOINT', 'https://ai.example.com'],
-    ['LOCKET_AI_TOKEN', VALID_TOKEN],
+    ['LOCKET_AI_TOKEN', 'backend-token-01234567890123456789'],
     ['LOCKET_PTB_QUEUE', JSON.stringify({ urls: ['https://firebasestorage.googleapis.com/a.jpg', 'https://firebasestorage.googleapis.com/b.jpg'], updatedAt: Date.now() })],
   ]);
   const get = run({ store });
@@ -118,5 +118,5 @@ test('setup page displays active photobooth queue count and resets only the queu
   assert.equal(reset.response.status, 303);
   assert.equal(store.get('LOCKET_PTB_QUEUE'), '');
   assert.equal(store.get('LOCKET_AI_ENDPOINT'), 'https://ai.example.com');
-  assert.equal(store.get('LOCKET_AI_TOKEN'), VALID_TOKEN);
+  assert.equal(store.get('LOCKET_AI_TOKEN'), 'backend-token-01234567890123456789');
 });
