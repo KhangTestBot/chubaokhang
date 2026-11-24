@@ -612,10 +612,10 @@ const ownedCatalog = JSON.parse(await readFile(new URL('../assets/filters/catalo
 const renderPresets = JSON.parse(await readFile(new URL('../assets/filters/render-presets.json', import.meta.url), 'utf8'));
 const PRESET_IDS = new Set(Object.keys(renderPresets.presets));
 
-test('owned live catalog retains all 106 entries (78 AI + 28 compositions) and dispatches all 22 Duy Khanh Exclusive filters', () => {
-  assert.equal(ownedCatalog.filters.length, 106);
-  assert.equal(new Set(ownedCatalog.filters.map(f => f.id)).size, 106);
-  assert.equal(ownedCatalog.filters.filter(f => PRESET_IDS.has(f.id)).length, 28);
+test('owned live catalog retains all 88 entries (78 AI + 10 Photobooths) and dispatches all 22 Duy Khanh Exclusive filters', () => {
+  assert.equal(ownedCatalog.filters.length, 88);
+  assert.equal(new Set(ownedCatalog.filters.map(f => f.id)).size, 88);
+  assert.equal(ownedCatalog.filters.filter(f => PRESET_IDS.has(f.id)).length, 10);
   const excl = ownedCatalog.groups.find(g => g.id === 'group_duykhanh_exclusive');
   assert.ok(excl);
   assert.equal(excl.filterIds.length, 22);

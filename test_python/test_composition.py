@@ -183,9 +183,10 @@ class CompositionTests(unittest.TestCase):
 
 
 class RepositoryPresetTests(unittest.TestCase):
-    def test_all_28_bundled_presets_render_real_photo_windows(self):
+    def test_all_10_bundled_presets_render_real_photo_windows(self):
         manifest = json.loads(composition.DEFAULT_MANIFEST_PATH.read_bytes())
-        self.assertEqual(set(manifest["presets"]), composition.CANONICAL_PRESET_IDS)
+        self.assertTrue(set(manifest["presets"]).issubset(composition.CANONICAL_PRESET_IDS))
+        self.assertEqual(len(manifest["presets"]), 10)
         self.assertEqual(sum(entry["kind"] == "photobooth" for entry in manifest["presets"].values()), 10)
         source = image_bytes((239, 31, 47))
         for preset_id, entry in manifest["presets"].items():
