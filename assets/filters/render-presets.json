@@ -340,6 +340,54 @@
           344
         ]
       ]
+    },
+    "frame_classic_pb": {
+      "kind": "frame",
+      "asset": "assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+      "size": [
+        1080,
+        1080
+      ],
+      "slots": [
+        [
+          220,
+          178,
+          640,
+          616
+        ]
+      ]
+    },
+    "pb_single_denim_ripped": {
+      "kind": "frame",
+      "asset": "assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+      "size": [
+        1080,
+        1080
+      ],
+      "slots": [
+        [
+          210,
+          198,
+          660,
+          624
+        ]
+      ]
+    },
+    "pb_single_y2k_silver_holo": {
+      "kind": "frame",
+      "asset": "assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+      "size": [
+        1080,
+        1080
+      ],
+      "slots": [
+        [
+          208,
+          152,
+          664,
+          652
+        ]
+      ]
     }
   },
   "aliases": {
@@ -353,6 +401,10 @@
     "pb_ripped_paper_4cut": "pb_ripped_paper_4cut",
     "pb_denim_ripped_2x2": "pb_denim_ripped_2x2",
     "photobooth": "photobooth_4cut",
-    "pb_vintage_news_4cut": "pb_vintage_news_4cut"
+    "pb_vintage_news_4cut": "pb_vintage_news_4cut",
+    "frame_classic_pb": "frame_classic_pb",
+    "photoboot": "frame_classic_pb",
+    "pb_single_denim_ripped": "pb_single_denim_ripped",
+    "pb_single_y2k_silver_holo": "pb_single_y2k_silver_holo"
   }
 }

@@ -4079,6 +4079,156 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
         "try_button_enabled": true,
         "type": "normal",
         "filterType": "normal"
+    },
+    {
+        "uid": "frame_classic_pb",
+        "id": "frame_classic_pb",
+        "name": "Khung Starry Night 🌌",
+        "category": "Frames",
+        "prompt": "frame_classic_pb",
+        "style": "cutout",
+        "type": "normal",
+        "filterType": "cutout",
+        "overlay": true,
+        "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+        "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+        "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+        "tintColor": "#1D4ED8",
+        "colors": [
+            "#1D4ED8",
+            "#3B82F6"
+        ],
+        "captureButtonColors": [
+            "#1D4ED8",
+            "#3B82F6"
+        ],
+        "icon": {
+            "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+            "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+            "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/f60f29cba5cfd09666cb3449398e6c482967c72f9eb2dd0a9e250484d6dcbcb9.png",
+            "sfSymbol": "photo.artframe",
+            "symbol": "photo.artframe",
+            "emoji": ""
+        },
+        "outputUrl": null,
+        "productUrl": null,
+        "textColor": "#FFFFFF",
+        "referenceImages": [],
+        "requires_gold": false,
+        "requiresGold": false,
+        "is_gold": false,
+        "isGold": false,
+        "unlocked": true,
+        "is_unlocked": true,
+        "isUnlocked": true,
+        "free": true,
+        "allowsTryFilter": true,
+        "allows_try_filter": true,
+        "tryButtonEnabled": true,
+        "try_button_enabled": true,
+        "ptbFrameId": "frame_classic_pb",
+        "captureCountHint": 1
+    },
+    {
+        "uid": "pb_single_denim_ripped",
+        "id": "pb_single_denim_ripped",
+        "name": "Khung Coastal Blue 🌊",
+        "category": "Frames",
+        "prompt": "pb_single_denim_ripped",
+        "style": "cutout",
+        "type": "normal",
+        "filterType": "cutout",
+        "overlay": true,
+        "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+        "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+        "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+        "tintColor": "#60A5FA",
+        "colors": [
+            "#60A5FA",
+            "#93C5FD"
+        ],
+        "captureButtonColors": [
+            "#60A5FA",
+            "#93C5FD"
+        ],
+        "icon": {
+            "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+            "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+            "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/ed9c78fafa9599be44a912282d502efff92a24a99113041fb14da7b594eed105.png",
+            "sfSymbol": "photo.artframe",
+            "symbol": "photo.artframe",
+            "emoji": ""
+        },
+        "outputUrl": null,
+        "productUrl": null,
+        "textColor": "#FFFFFF",
+        "referenceImages": [],
+        "requires_gold": false,
+        "requiresGold": false,
+        "is_gold": false,
+        "isGold": false,
+        "unlocked": true,
+        "is_unlocked": true,
+        "isUnlocked": true,
+        "free": true,
+        "allowsTryFilter": true,
+        "allows_try_filter": true,
+        "tryButtonEnabled": true,
+        "try_button_enabled": true,
+        "ptbFrameId": "pb_single_denim_ripped",
+        "captureCountHint": 1
+    },
+    {
+        "uid": "pb_single_y2k_silver_holo",
+        "id": "pb_single_y2k_silver_holo",
+        "name": "Khung Spider-Man 🕷️",
+        "category": "Frames",
+        "prompt": "pb_single_y2k_silver_holo",
+        "style": "cutout",
+        "type": "normal",
+        "filterType": "cutout",
+        "overlay": true,
+        "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+        "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+        "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+        "tintColor": "#991B1B",
+        "colors": [
+            "#991B1B",
+            "#B91C1C"
+        ],
+        "captureButtonColors": [
+            "#991B1B",
+            "#B91C1C"
+        ],
+        "icon": {
+            "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+            "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+            "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/28aafbe4fa70aa2b0d552a59df85a5d9b504acce156df4767c6ce7e79419af07.png",
+            "sfSymbol": "photo.artframe",
+            "symbol": "photo.artframe",
+            "emoji": ""
+        },
+        "outputUrl": null,
+        "productUrl": null,
+        "textColor": "#FFFFFF",
+        "referenceImages": [],
+        "requires_gold": false,
+        "requiresGold": false,
+        "is_gold": false,
+        "isGold": false,
+        "unlocked": true,
+        "is_unlocked": true,
+        "isUnlocked": true,
+        "free": true,
+        "allowsTryFilter": true,
+        "allows_try_filter": true,
+        "tryButtonEnabled": true,
+        "try_button_enabled": true,
+        "ptbFrameId": "pb_single_y2k_silver_holo",
+        "captureCountHint": 1
     }
 ];
     var locketAIGroups = [
@@ -4242,6 +4392,23 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
         "is_unlocked": true,
         "isUnlocked": true,
         "free": true
+    },
+    {
+        "id": "group_frames",
+        "title": {
+            "en": "Khung ảnh Duy Khánh 🖼️",
+            "vi": "Khung ảnh Duy Khánh 🖼️"
+        },
+        "filterIds": [
+            "frame_classic_pb",
+            "pb_single_denim_ripped",
+            "pb_single_y2k_silver_holo"
+        ],
+        "filter_ids": [
+            "frame_classic_pb",
+            "pb_single_denim_ripped",
+            "pb_single_y2k_silver_holo"
+        ]
     },
     {
         "id": "group_event",
@@ -4678,6 +4845,9 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
     "pb_ripped_paper_4cut",
     "pb_denim_ripped_2x2",
     "pb_vintage_news_4cut",
+    "frame_classic_pb",
+    "pb_single_denim_ripped",
+    "pb_single_y2k_silver_holo",
     "stk_dio_pm2",
     "stk_dio_looksmaxing",
     "stk_dio_influencer",

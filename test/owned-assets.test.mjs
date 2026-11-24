@@ -29,10 +29,10 @@ test('every live filter asset is hosted in the personal repository and matches i
   }
 });
 
-test('all 10 photobooth entries have matching local overlays and truthful native capture hints', () => {
+test('all 13 frame and photobooth entries have matching local overlays and truthful native capture hints', () => {
   const entries = catalog.filters.filter(entry => ['Frames', 'Photobooth'].includes(entry.category));
-  assert.equal(entries.length, 10);
-  assert.equal(Object.keys(manifest.presets).length, 10);
+  assert.equal(entries.length, 13);
+  assert.equal(Object.keys(manifest.presets).length, 13);
   let four = 0;
   for (const entry of entries) {
     const preset = manifest.presets[entry.id];

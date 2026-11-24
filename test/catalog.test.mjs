@@ -72,15 +72,15 @@ function protectedConfig(value) {
   return result;
 }
 
-test('pinned catalog resolves every group and picker ID to one of 88 unique filters', () => {
+test('pinned catalog resolves every group and picker ID to one of 91 unique filters', () => {
   assert.deepEqual(catalog.source, {
     repo: 'dtuandzxyz/Locket-Filter-Module',
     commit: '9c2ea58aaea3f6d9258b60d3cf1621ea6a4ccdce',
     path: 'js/locketfix.js'
   });
-  assert.equal(catalog.filters.length, 88);
-  assert.equal(catalog.groups.length, 10);
-  assert.equal(catalog.pickerIds.length, 68);
+  assert.equal(catalog.filters.length, 91);
+  assert.equal(catalog.groups.length, 11);
+  assert.equal(catalog.pickerIds.length, 71);
   const ids = new Set(catalog.filters.map(filter => filter.id));
   assert.equal(ids.size, catalog.filters.length);
   for (const filter of catalog.filters) {
@@ -215,7 +215,7 @@ test('malformed nested server JSON does not prevent catalog injection', () => {
     const original = input();
     for (const key of ['camera_filter_config', 'feature_gates', 'upsell_features', 'paywall_presentation_config']) original.entries[key] = value;
     const output = run(original).output;
-    assert.equal(JSON.parse(output.entries.camera_filter_config).remoteFilters.length, 88);
+    assert.equal(JSON.parse(output.entries.camera_filter_config).remoteFilters.length, 91);
     assert.equal(JSON.parse(output.entries.feature_gates).ai_filters, 'enabled');
     assert.equal(output.entries.unrelated_entry, 'kept');
   }
