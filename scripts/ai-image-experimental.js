@@ -200,6 +200,7 @@
         "pb_scrapbook_ripped_4cut": 4,
         "pb_ripped_paper_4cut": 4,
         "pb_denim_ripped_2x2": 4,
+        "pb_vintage_news_4cut": 4,
         "frame_classic_pb": 1,
         "sticker_b_nh_lu_n_minh_tu": 1,
         "cmt_locket": 1,

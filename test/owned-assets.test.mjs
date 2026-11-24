@@ -29,10 +29,10 @@ test('every live filter asset is hosted in the personal repository and matches i
   }
 });
 
-test('all 27 frame entries have matching local overlays and truthful native capture hints', () => {
+test('all 28 frame entries have matching local overlays and truthful native capture hints', () => {
   const entries = catalog.filters.filter(entry => ['Frames', 'Photobooth'].includes(entry.category));
-  assert.equal(entries.length, 27);
-  assert.equal(Object.keys(manifest.presets).length, 27);
+  assert.equal(entries.length, 28);
+  assert.equal(Object.keys(manifest.presets).length, 28);
   let four = 0;
   for (const entry of entries) {
     const preset = manifest.presets[entry.id];
@@ -48,7 +48,7 @@ test('all 27 frame entries have matching local overlays and truthful native capt
       assert.ok(x + width <= preset.size[0] && y + height <= preset.size[1]);
     }
   }
-  assert.equal(four, 9);
+  assert.equal(four, 10);
 });
 
 test('the personal module keeps all AI scripts in its own repository without upstream backend credentials', async () => {

@@ -27,7 +27,7 @@ DEFAULT_MANIFEST_PATH = DEFAULT_ASSET_ROOT / "render-presets.json"
 CANONICAL_PRESET_IDS = frozenset((
     "frame_berry_days", "frame_happy_snap", "frame_sky_diary",
     "photobooth_4cut", "photobooth_cute", "pb_holo_4cut",
-    "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2",
+    "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2", "pb_vintage_news_4cut",
     "frame_classic_pb", "sticker_b_nh_lu_n_minh_tu", "cmt_locket",
     "khung_hello_kitty_pastel_ng_t_ng_o", "khung_hello_kitty_h_ng_pastel",
     "khung_nh_n_pastel_vi_n_ren", "khung_nh_hoa_pastel_vi_n_xanh_m_nh",

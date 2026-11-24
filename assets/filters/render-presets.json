@@ -3,69 +3,69 @@
   "presets": {
     "frame_berry_days": {
       "kind": "photobooth",
-      "asset": "assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
+      "asset": "assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
       "size": [
         1080,
         1080
       ],
       "slots": [
         [
-          62,
-          62,
-          464,
-          424
+          176,
+          178,
+          360,
+          338
         ],
         [
           554,
-          62,
-          464,
-          424
+          178,
+          360,
+          338
         ],
         [
-          62,
-          514,
-          464,
-          424
+          176,
+          536,
+          360,
+          338
         ],
         [
           554,
-          514,
-          464,
-          424
+          536,
+          360,
+          338
         ]
       ]
     },
     "frame_happy_snap": {
       "kind": "photobooth",
-      "asset": "assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
+      "asset": "assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
       "size": [
         1080,
         1080
       ],
       "slots": [
         [
-          62,
-          62,
-          464,
-          424
+          354,
+          118,
+          286,
+          336
         ],
         [
-          554,
-          62,
-          464,
-          424
+          684,
+          152,
+          286,
+          336
         ],
         [
-          62,
-          514,
-          464,
-          424
+          354,
+          540,
+          286,
+          336
         ],
         [
-          554,
-          514,
-          464,
-          424
+          684,
+          574,
+          286,
+          336
         ]
       ]
     },
@@ -594,6 +594,40 @@
           872
         ]
       ]
+    },
+    "pb_vintage_news_4cut": {
+      "kind": "photobooth",
+      "asset": "assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+      "size": [
+        1080,
+        1080
+      ],
+      "slots": [
+        [
+          136,
+          146,
+          382,
+          344
+        ],
+        [
+          562,
+          146,
+          382,
+          344
+        ],
+        [
+          136,
+          566,
+          382,
+          344
+        ],
+        [
+          562,
+          566,
+          382,
+          344
+        ]
+      ]
     }
   },
   "aliases": {
@@ -624,6 +658,7 @@
     "pb_single_y2k_silver_holo": "pb_single_y2k_silver_holo",
     "pb_single_denim_ripped": "pb_single_denim_ripped",
     "pb_single_film_nostalgia": "pb_single_film_nostalgia",
-    "photobooth": "photobooth_4cut"
+    "photobooth": "photobooth_4cut",
+    "pb_vintage_news_4cut": "pb_vintage_news_4cut"
   }
 }

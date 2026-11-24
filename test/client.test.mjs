@@ -12,7 +12,7 @@ const FOUR_INPUTS = Array.from({ length: 4 }, (_, index) => INPUT.replace('photo
 const FOUR_SLOT_IDS = new Set([
   'frame_berry_days', 'frame_happy_snap', 'frame_sky_diary', 'photobooth_4cut',
   'photobooth_cute', 'pb_holo_4cut', 'pb_scrapbook_ripped_4cut',
-  'pb_ripped_paper_4cut', 'pb_denim_ripped_2x2',
+  'pb_ripped_paper_4cut', 'pb_denim_ripped_2x2', 'pb_vintage_news_4cut',
 ]);
 
 function composedResult(sourceImageCount = 1, slotCount = 4, extra = {}) {
@@ -612,10 +612,10 @@ const ownedCatalog = JSON.parse(await readFile(new URL('../assets/filters/catalo
 const renderPresets = JSON.parse(await readFile(new URL('../assets/filters/render-presets.json', import.meta.url), 'utf8'));
 const PRESET_IDS = new Set(Object.keys(renderPresets.presets));
 
-test('owned live catalog retains all 105 entries (78 AI + 27 compositions) and dispatches all 22 Duy Khanh Exclusive filters', () => {
-  assert.equal(ownedCatalog.filters.length, 105);
-  assert.equal(new Set(ownedCatalog.filters.map(f => f.id)).size, 105);
-  assert.equal(ownedCatalog.filters.filter(f => PRESET_IDS.has(f.id)).length, 27);
+test('owned live catalog retains all 106 entries (78 AI + 28 compositions) and dispatches all 22 Duy Khanh Exclusive filters', () => {
+  assert.equal(ownedCatalog.filters.length, 106);
+  assert.equal(new Set(ownedCatalog.filters.map(f => f.id)).size, 106);
+  assert.equal(ownedCatalog.filters.filter(f => PRESET_IDS.has(f.id)).length, 28);
   const excl = ownedCatalog.groups.find(g => g.id === 'group_duykhanh_exclusive');
   assert.ok(excl);
   assert.equal(excl.filterIds.length, 22);

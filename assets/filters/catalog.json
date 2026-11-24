@@ -1856,30 +1856,30 @@
     {
       "uid": "frame_berry_days",
       "id": "frame_berry_days",
-      "name": "Photobooth Duy Khánh 01",
+      "name": "Photobooth Blue Diary 💙",
       "category": "Photobooth",
       "prompt": "pb_strawberry",
       "style": "cutout",
       "type": "normal",
       "filterType": "cutout",
       "overlay": true,
-      "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-      "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-      "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-      "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-      "tintColor": "#FFB6C1",
+      "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+      "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+      "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+      "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+      "tintColor": "#3B82F6",
       "colors": [
-        "#FFB6C1",
-        "#FF69B4"
+        "#3B82F6",
+        "#60A5FA"
       ],
       "captureButtonColors": [
-        "#FFB6C1",
-        "#FF69B4"
+        "#3B82F6",
+        "#60A5FA"
       ],
       "icon": {
-        "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
-        "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/9e54127c1bc7a37ab6c5e68319d26e77c348e843dbe264590a1d1b18ae135cec.png",
+        "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
+        "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d0c486c0e105578f36108bcdf1b71bdd7416852c647a4483b97537a405f6c6a0.png",
         "sfSymbol": "square.grid.2x2",
         "symbol": "square.grid.2x2",
         "emoji": ""
@@ -1906,30 +1906,30 @@
     {
       "uid": "frame_happy_snap",
       "id": "frame_happy_snap",
-      "name": "Photobooth Duy Khánh 02",
+      "name": "Photobooth Burgundy Vinyl 🍷",
       "category": "Photobooth",
       "prompt": "pb_vintage",
       "style": "cutout",
       "type": "normal",
       "filterType": "cutout",
       "overlay": true,
-      "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-      "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-      "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-      "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-      "tintColor": "#A8E6CF",
+      "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+      "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+      "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+      "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+      "tintColor": "#7F1D1D",
       "colors": [
-        "#A8E6CF",
-        "#88D49E"
+        "#7F1D1D",
+        "#991B1B"
       ],
       "captureButtonColors": [
-        "#A8E6CF",
-        "#88D49E"
+        "#7F1D1D",
+        "#991B1B"
       ],
       "icon": {
-        "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
-        "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/3730a467d549c5dbbaca6e867a30c5f11904c328a98dfe4a908fcb0fb0bfe315.png",
+        "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
+        "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/d9b8fd04e9578423e4812873464fa8be92f6e0b9e03079aaa0867e08a18c2e52.png",
         "sfSymbol": "square.grid.2x2",
         "symbol": "square.grid.2x2",
         "emoji": ""
@@ -2301,6 +2301,56 @@
       "tryButtonEnabled": true,
       "try_button_enabled": true,
       "ptbFrameId": "pb_denim_ripped_2x2",
+      "captureCountHint": 4
+    },
+    {
+      "uid": "pb_vintage_news_4cut",
+      "id": "pb_vintage_news_4cut",
+      "name": "Photobooth Vintage News 📰",
+      "category": "Photobooth",
+      "prompt": "pb_vintage_news_4cut",
+      "style": "cutout",
+      "type": "normal",
+      "filterType": "cutout",
+      "overlay": true,
+      "imageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+      "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+      "overlayImageUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+      "overlayImageURL": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+      "tintColor": "#C8B89A",
+      "colors": [
+        "#C8B89A",
+        "#DDD1BC"
+      ],
+      "captureButtonColors": [
+        "#C8B89A",
+        "#DDD1BC"
+      ],
+      "icon": {
+        "url": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+        "iconUrl": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+        "remoteImage": "https://raw.githubusercontent.com/KhangTestBot/chubaokhang/main/assets/filters/db34d058bb558db34dd870658a3fa42835aec374ec1aa78d9c38c4922be2bf6f.png",
+        "sfSymbol": "square.grid.2x2",
+        "symbol": "square.grid.2x2",
+        "emoji": ""
+      },
+      "outputUrl": null,
+      "productUrl": null,
+      "textColor": "#FFFFFF",
+      "referenceImages": [],
+      "requires_gold": false,
+      "requiresGold": false,
+      "is_gold": false,
+      "isGold": false,
+      "unlocked": true,
+      "is_unlocked": true,
+      "isUnlocked": true,
+      "free": true,
+      "allowsTryFilter": true,
+      "allows_try_filter": true,
+      "tryButtonEnabled": true,
+      "try_button_enabled": true,
+      "ptbFrameId": "pb_vintage_news_4cut",
       "captureCountHint": 4
     },
     {
@@ -4940,7 +4990,8 @@
         "pb_holo_4cut",
         "pb_scrapbook_ripped_4cut",
         "pb_ripped_paper_4cut",
-        "pb_denim_ripped_2x2"
+        "pb_denim_ripped_2x2",
+        "pb_vintage_news_4cut"
       ],
       "filter_ids": [
         "stk_rose_flower",
@@ -4965,7 +5016,8 @@
         "pb_holo_4cut",
         "pb_scrapbook_ripped_4cut",
         "pb_ripped_paper_4cut",
-        "pb_denim_ripped_2x2"
+        "pb_denim_ripped_2x2",
+        "pb_vintage_news_4cut"
       ],
       "requires_gold": false,
       "requiresGold": false,
@@ -5493,6 +5545,7 @@
     "pb_scrapbook_ripped_4cut",
     "pb_ripped_paper_4cut",
     "pb_denim_ripped_2x2",
+    "pb_vintage_news_4cut",
     "frame_classic_pb",
     "sticker_b_nh_lu_n_minh_tu",
     "cmt_locket",
