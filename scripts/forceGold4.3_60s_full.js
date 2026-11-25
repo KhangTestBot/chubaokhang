@@ -5264,16 +5264,12 @@ if (ua.includes("Locket") || /projects\/locket-4252a\//.test($request.url || "")
             {
                 section: "🎨 DuyKhanh💗",
                 items: [
-                    { overlay_id: "caption:nho_hoang", source: "remote", caption: { background: { colors: ["#97FFFF", "#FFE4C4"] }, icon: { data: "🥰", type: "emoji" }, max_lines: 1, text: "Nhớ Duy Khánh 💗", text_color: "#9E2024", type: "static_content" } },
-                    { overlay_id: "caption:yeu_duy_khanh", source: "remote", caption: { background: { colors: ["#FF9A9E", "#FECFEF"] }, icon: { data: "❤️", type: "emoji" }, max_lines: 1, text: "Yêu Duy Khánh", text_color: "#7A1631", type: "static_content" } },
-                    { overlay_id: "caption:duy_khanh_cutii", source: "remote", caption: { background: { colors: ["#FDE2B8", "#FAD0C4"] }, icon: { data: "🧸", type: "emoji" }, max_lines: 1, text: "Duy Khánh cutii", text_color: "#5C2E14", type: "static_content" } },
-                    { overlay_id: "caption:khanh_ne", source: "remote", caption: { background: { colors: ["#D4FC79", "#96E6A1"] }, icon: { data: "👋", type: "emoji" }, max_lines: 1, text: "Khánh nèee", text_color: "#174524", type: "static_content" } },
-                    { overlay_id: "caption:call_khanh_di", source: "remote", caption: { background: { colors: ["#84FAB0", "#8FD3F4"] }, icon: { data: "📞", type: "emoji" }, max_lines: 1, text: "Call Khánh đi", text_color: "#0E3A4D", type: "static_content" } },
-                    { overlay_id: "caption:khanh_doi_bung", source: "remote", caption: { background: { colors: ["#FBC2EB", "#A6C1EE"] }, icon: { data: "🍜", type: "emoji" }, max_lines: 1, text: "Khánh đói bụng", text_color: "#2F2352", type: "static_content" } },
-                    { overlay_id: "caption:di_choi_voi_khanh", source: "remote", caption: { background: { colors: ["#FFD89B", "#FF9A8B"] }, icon: { data: "🛵", type: "emoji" }, max_lines: 1, text: "Đi chơi với Khánh", text_color: "#542110", type: "static_content" } },
-                    { overlay_id: "caption:duy_khanh_chill", source: "remote", caption: { background: { colors: ["#2B3A67", "#496A81"] }, icon: { data: "🎧", type: "emoji" }, max_lines: 1, text: "Duy Khánh chill", text_color: "#FFFFFFE6", type: "static_content" } },
-                    { overlay_id: "caption:khanh_buon_ngu", source: "remote", caption: { background: { colors: ["#3A1C71", "#D76D77"] }, icon: { data: "😴", type: "emoji" }, max_lines: 1, text: "Khánh buồn ngủ", text_color: "#FFFFFFE6", type: "static_content" } },
-                    { overlay_id: "caption:team_duy_khanh", source: "remote", caption: { background: { colors: ["#FF512F", "#F09819"] }, icon: { data: "🔥", type: "emoji" }, max_lines: 1, text: "Team Duy Khánh", text_color: "#FFFFFF", type: "static_content" } },
+                    { overlay_id: "caption:doi_bung_qua_troi", source: "remote", caption: { background: { colors: ["#F6D365", "#FDA085"] }, icon: { data: "🍕", type: "emoji" }, max_lines: 1, text: "Đói bụng quá trời", text_color: "#5A2A0C", type: "static_content" } },
+                    { overlay_id: "caption:nam_im_thoi", source: "remote", caption: { background: { colors: ["#C3CFE2", "#E0C3FC"] }, icon: { data: "🛋️", type: "emoji" }, max_lines: 1, text: "Hôm nay nằm im thôi", text_color: "#2D2A5A", type: "static_content" } },
+                    { overlay_id: "caption:ca_phe_roi_tinh", source: "remote", caption: { background: { colors: ["#E6C9A8", "#D4A574"] }, icon: { data: "☕", type: "emoji" }, max_lines: 1, text: "Cà phê rồi tính tiếp", text_color: "#4A2C14", type: "static_content" } },
+                    { overlay_id: "caption:vui_khong_ly_do", source: "remote", caption: { background: { colors: ["#A18CD1", "#FBC2EB"] }, icon: { data: "🌈", type: "emoji" }, max_lines: 1, text: "Vui không cần lý do", text_color: "#3B1F5C", type: "static_content" } },
+                    { overlay_id: "caption:hom_nay_hoi_lay", source: "remote", caption: { background: { colors: ["#FDCB6E", "#FF9FF3"] }, icon: { data: "🤪", type: "emoji" }, max_lines: 1, text: "Hôm nay hơi lầy", text_color: "#4A235A", type: "static_content" } },
+                    { overlay_id: "caption:ngu_them_5_phut", source: "remote", caption: { background: { colors: ["#89F7FE", "#66A6FF"] }, icon: { data: "😴", type: "emoji" }, max_lines: 1, text: "Ngủ thêm 5 phút nữa", text_color: "#0F2A5A", type: "static_content" } },
                 ]
             },
             {
